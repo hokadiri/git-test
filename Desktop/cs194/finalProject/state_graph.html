@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Graphinator</title>
+<style>
+.btn {
+	display: inline-block;
+	background: url(btn.bg.png) repeat-x 0px 0px;
+	padding:5px 10px 6px 10px;
+	font-weight:bold;
+	text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+	border:1px solid rgba(0,0,0,0.4);
+	-moz-border-radius: 5px;
+	-moz-box-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+	-webkit-border-radius: 5px;
+	-webkit-box-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+}
+.blue		{background-color: #CCCCCC; color: #141414;}
+.blue:hover	{background-color: #00c0ff; color: #ffffff;}
+
+.green		{background-color: #CCCCCC; color: #141414;}
+.green:hover	{background-color: #8aff00; color: #ffffff;}
+
+.red		{background-color: #CCCCCC; color: #141414;}
+.red:hover	{background-color: #ff004e; color: #ffffff;}
+</style>
+<script type="text/javascript">
+var States=new Array(); 
+States[0]="AZ";       
+States[1]="CA";
+States[2]="NY";
+function changeState(val)
+{
+  var newNum;
+  if (parseInt(val) == 0)
+  {
+    newNum = parseInt(document.getElementById('arrPos').value) - 1;
+    
+  }
+  else
+  {
+    newNum = parseInt(document.getElementById('arrPos').value) + parseInt(val);  
+  }
+    
+  if (newNum > 2)
+  {
+    document.getElementById('arrPos').value = "0";
+    document.getElementById('state').innerHTML = States[parseInt(document.getElementById('arrPos').value)];
+  }
+  else if(newNum < 0)
+  {
+     document.getElementById('arrPos').value = "2";
+     document.getElementById('state').innerHTML = States[parseInt(document.getElementById('arrPos').value)];
+  }
+  else
+  {
+     document.getElementById('arrPos').value = newNum;    
+     document.getElementById('state').innerHTML = States[parseInt(document.getElementById('arrPos').value)];
+  }
+
+}
+</script>
+</head>
+<body>
+
+<button class="btn green" onclick="changeState(0)">Prev</button>
+<p class="btn" id="state">AZ</p>
+<button class="btn red" onclick="changeState(1)">Next</button>
+<input  type=hidden id="arrPos" value="0"></input>
+</body>
+</html>
